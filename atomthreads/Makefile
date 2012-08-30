@@ -11,7 +11,7 @@ VERBOSE=0
 # Location of build tools and atomthreads sources
 
 KERNEL_DIR=kernel
-TESTS_DIR=project
+PROJ_DIR=project
 AVR_DIR=arch
 CC=/usr/bin/avr-gcc
 OBJCOPY=/usr/bin/avr-objcopy
@@ -49,7 +49,7 @@ ALL_OBJECTS = $(APP_OBJECTS) $(APP_ASM_OBJECTS) $(KERNEL_OBJECTS)
 BUILT_OBJECTS = $(patsubst %,$(BUILD_DIR)/%,$(ALL_OBJECTS))
 
 # Test object files (dealt with separately as only one per application build)
-TEST_OBJECTS = $(notdir $(patsubst %.c,%.o,$(wildcard $(TESTS_DIR)/*.c)))
+TEST_OBJECTS = $(notdir $(patsubst %.c,%.o,$(wildcard $(PROJ_DIR)/*.c)))
 
 # Target application filenames (.elf and .hex) for each test object
 TEST_ELFS = $(patsubst %.o,%.elf,$(TEST_OBJECTS))
@@ -95,23 +95,23 @@ $(TEST_ELFS): %.elf: %.o $(KERNEL_OBJECTS) $(APP_OBJECTS) $(APP_ASM_OBJECTS)
 
 # Kernel objects builder
 $(KERNEL_OBJECTS): %.o: $(KERNEL_DIR)/%.c
-	$(CC) -c $(CFLAGS) -I$(AVR_DIR) -I$(KERNEL_DIR) $< -o $(BUILD_DIR)/$(notdir $@)
+	$(CC) -c $(CFLAGS) -I$(AVR_DIR)/incl -I$(KERNEL_DIR)/incl $< -o $(BUILD_DIR)/$(notdir $@)
 
 # Test objects builder
-$(TEST_OBJECTS): %.o: $(TESTS_DIR)/%.c
-	$(CC) -c $(CFLAGS) -I$(AVR_DIR) -I$(KERNEL_DIR) $< -o $(BUILD_DIR)/$(notdir $@)
+$(TEST_OBJECTS): %.o: $(PROJ_DIR)/%.c
+	$(CC) -c $(CFLAGS) -I$(AVR_DIR)/incl -I$(KERNEL_DIR)/incl $< -o $(BUILD_DIR)/$(notdir $@)
 
 # Application C objects builder
 $(APP_OBJECTS): %.o: $(AVR_DIR)/%.c
-	$(CC) -c $(CFLAGS) -I$(AVR_DIR) -I$(KERNEL_DIR) -I$(TESTS_DIR) $< -o $(BUILD_DIR)/$(notdir $@)
+	$(CC) -c $(CFLAGS) -I$(AVR_DIR)/incl -I$(KERNEL_DIR)/incl -I$(PROJ_DIR)/incl $< -o $(BUILD_DIR)/$(notdir $@)
 
 # Application asm objects builder
 $(APP_ASM_OBJECTS): %.o:  $(AVR_DIR)/%.s
-	$(CC) -c $(CFLAGS) -x assembler-with-cpp -I$(AVR_DIR) -I$(KERNEL_DIR) $< -o $(BUILD_DIR)/$(notdir $@)
+	$(CC) -c $(CFLAGS) -x assembler-with-cpp -I$(AVR_DIR)/incl -I$(KERNEL_DIR)/incl $< -o $(BUILD_DIR)/$(notdir $@)
 
 # .lst file builder
 %.lst: %.c
-	$(CC) $(CFLAGS) -I$(AVR_DIR) -I$(KERNEL_DIR) -I$(TESTS_DIR) -Wa,-al $< > $@
+	$(CC) $(CFLAGS) -I$(AVR_DIR)/incl -I$(KERNEL_DIR)/incl -I$(PROJ_DIR)/incl -Wa,-al $< > $@
 
 # Clean
 clean:
