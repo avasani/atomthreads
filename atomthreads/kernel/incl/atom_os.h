@@ -41,7 +41,7 @@
 #define TEST_THREAD_PRIO            16
 
 /* API for starting each test */
-extern uint32_t test_start (void);
+extern uint32_t app_main_start (void);
 
 
 #endif /* __ATOM_TESTS_H */

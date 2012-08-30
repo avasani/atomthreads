@@ -29,7 +29,7 @@
 
 
 #include "atom.h"
-#include "atomtests.h"
+#include "atom_os.h"
 
 
 /* Test OS objects */
@@ -54,7 +54,7 @@ static void test_thread_func (uint32_t param);
  *
  * @retval Number of failures
  */
-uint32_t test_start (void)
+uint32_t app_main_start (void)
 {
     int failures;
 

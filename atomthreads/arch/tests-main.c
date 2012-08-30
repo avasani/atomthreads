@@ -31,7 +31,7 @@
 
 #include "atom.h"
 #include "atomport-private.h"
-#include "atomtests.h"
+#include "atom_os.h"
 #include "atomtimer.h"
 #include "uart.h"
 #include <avr/pgmspace.h>
@@ -224,7 +224,7 @@ int main ( void )
  */
 static void main_thread_func (uint32_t data)
 {
-    uint32_t test_status;
+    uint32_t main_status;
     int sleep_ticks;
 
     /* Enable all LEDs (STK500-specific) */
@@ -248,11 +248,11 @@ static void main_thread_func (uint32_t data)
     printf_P (PSTR("Go\n"));
 
     /* Start test. All tests use the same start API. */
-    test_status = test_start();
+    main_status = app_main_start();
 
     /* Check main thread stack usage (if enabled) */
 #ifdef ATOM_STACK_CHECKING
-    if (test_status == 0)
+    if (main_status == 0)
     {
         uint32_t used_bytes, free_bytes;
 
@@ -263,7 +263,7 @@ static void main_thread_func (uint32_t data)
             if (free_bytes == 0)
             {
                 printf_P (PSTR("Main stack overflow\n"));
-                test_status++;
+                main_status++;
             }
 
             /* Log the stack usage */
@@ -275,18 +275,8 @@ static void main_thread_func (uint32_t data)
     }
 #endif
 
-    /* Log final status */
-    if (test_status == 0)
-    {
-        printf_P (PSTR("Pass\n"));
-    }
-    else
-    {
-        printf_P (PSTR("Fail(%d)\n"), test_status);
-    }
-
     /* Flash LED once per second if passed, very quickly if failed */
-    sleep_ticks = (test_status == 0) ? SYSTEM_TICKS_PER_SEC : (SYSTEM_TICKS_PER_SEC/8);
+    sleep_ticks = (main_status == 0) ? SYSTEM_TICKS_PER_SEC : (SYSTEM_TICKS_PER_SEC/8);
 
     /* Test finished, flash slowly for pass, fast for fail */
     while (1)
