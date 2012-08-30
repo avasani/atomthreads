@@ -2,10 +2,10 @@
 # Settings #
 ############
 VERBOSE=0
-# Build all test applications:
+# Build all project applications:
 #   make
 #
-# Program a test application using UISP (appname => test app e.g. sems1):
+# Program a project  application using UISP (appname =>  app name e.g. sems1):
 #   make program app=appname
 
 # Location of build tools and atomthreads sources
@@ -35,7 +35,7 @@ PART=atmega16
 #TESTS_LOG_STACK=true
 
 # Directory for built objects
-BUILD_DIR=build
+BUILD_DIR=libs
 
 # Port/application object files
 APP_OBJECTS = atomport.o uart.o tests-main.o
@@ -44,16 +44,16 @@ APP_ASM_OBJECTS = atomport-asm.o
 # Kernel object files
 KERNEL_OBJECTS = atomkernel.o atomsem.o atommutex.o atomtimer.o atomqueue.o
 
-# Collection of built objects (excluding test applications)
+# Collection of built objects (excluding proj applications)
 ALL_OBJECTS = $(APP_OBJECTS) $(APP_ASM_OBJECTS) $(KERNEL_OBJECTS)
 BUILT_OBJECTS = $(patsubst %,$(BUILD_DIR)/%,$(ALL_OBJECTS))
 
-# Test object files (dealt with separately as only one per application build)
-TEST_OBJECTS = $(notdir $(patsubst %.c,%.o,$(wildcard $(PROJ_DIR)/*.c)))
+# Proj object files (dealt with separately as only one per application build)
+PROJ_OBJECTS = $(notdir $(patsubst %.c,%.o,$(wildcard $(PROJ_DIR)/*.c)))
 
-# Target application filenames (.elf and .hex) for each test object
-TEST_ELFS = $(patsubst %.o,%.elf,$(TEST_OBJECTS))
-TEST_HEXS = $(patsubst %.o,%.hex,$(TEST_OBJECTS))
+# Target application filenames (.elf and .hex) for each proj object
+PROJ_ELFS = $(patsubst %.o,%.elf,$(PROJ_OBJECTS))
+PROJ_HEXS = $(patsubst %.o,%.hex,$(PROJ_OBJECTS))
 
 # Search build/output directory for dependencies
 vpath %.o ./$(BUILD_DIR)
@@ -76,8 +76,8 @@ endif
 # Build targets #
 #################
 
-# All tests
-all: $(BUILD_DIR) $(TEST_HEXS) Makefile
+# All Projects
+all: $(BUILD_DIR) $(PROJ_HEXS) Makefile
 
 # Make build/output directory
 $(BUILD_DIR):
@@ -85,20 +85,20 @@ $(BUILD_DIR):
 	mkdir $(BUILD_DIR)
 
 # Test HEX files (one application build for each test)
-$(TEST_HEXS): %.hex: %.elf
+$(PROJ_HEXS): %.hex: %.elf
 	@echo Building $@
-	$(OBJCOPY) -j .text -j .data -O ihex $(BUILD_DIR)/$< $(BUILD_DIR)/$@
+	$(OBJCOPY) -j .text -j .data -O ihex ./$< ./$@
 
 # Test ELF files (one application build for each test)
-$(TEST_ELFS): %.elf: %.o $(KERNEL_OBJECTS) $(APP_OBJECTS) $(APP_ASM_OBJECTS)
-	$(CC) $(CFLAGS) $(BUILD_DIR)/$(notdir $<) $(BUILT_OBJECTS) --output $(BUILD_DIR)/$@ -Wl,-Map,$(BUILD_DIR)/$(basename $@).map
+$(PROJ_ELFS): %.elf: %.o $(KERNEL_OBJECTS) $(APP_OBJECTS) $(APP_ASM_OBJECTS)
+	$(CC) $(CFLAGS) $(BUILD_DIR)/$(notdir $<) $(BUILT_OBJECTS) --output ./$@ -Wl,-Map,$(BUILD_DIR)/$(basename $@).map
 
 # Kernel objects builder
 $(KERNEL_OBJECTS): %.o: $(KERNEL_DIR)/%.c
 	$(CC) -c $(CFLAGS) -I$(AVR_DIR)/incl -I$(KERNEL_DIR)/incl $< -o $(BUILD_DIR)/$(notdir $@)
 
 # Test objects builder
-$(TEST_OBJECTS): %.o: $(PROJ_DIR)/%.c
+$(PROJ_OBJECTS): %.o: $(PROJ_DIR)/%.c
 	$(CC) -c $(CFLAGS) -I$(AVR_DIR)/incl -I$(KERNEL_DIR)/incl $< -o $(BUILD_DIR)/$(notdir $@)
 
 # Application C objects builder
@@ -131,7 +131,7 @@ doxygen:
 	doxygen ./Doxyfile
 
 # Run tests within simavr simulator
-phony_sim_elfs = $(addsuffix .sim, $(TEST_ELFS))
+phony_sim_elfs = $(addsuffix .sim, $(PROJ_ELFS))
 simtests: $(phony_sim_elfs)
 .PHONY: simtests $(phony_sim_elfs)
 $(phony_sim_elfs):
