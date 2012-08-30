@@ -1,0 +1,541 @@
+Archive member included because of file (symbol)
+
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_mulsi3.o)
+                              build/atomqueue.o (__mulsi3)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodsi4.o)
+                              build/uart.o (__udivmodsi4)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o (exit)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+                              build/mutex1.o (__do_copy_data)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+                              build/mutex1.o (__do_clear_bss)
+/usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(memcpy.o)
+                              build/atomqueue.o (memcpy)
+/usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(iob.o)
+                              build/tests-main.o (__iob)
+/usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o)
+                              build/mutex1.o (printf_P)
+/usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o) (vfprintf)
+/usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen_P.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o) (strnlen_P)
+/usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o) (strnlen)
+/usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(fputc.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o) (fputc)
+/usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(ultoa_invert.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o) (__ultoa_invert)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_prologue.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o) (__prologue_saves__)
+/usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_epilogue.o)
+                              /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o) (__epilogue_restores__)
+
+Allocating common symbols
+Common symbol       size              file
+
+__iob               0x6               /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(iob.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x0000000000000000 0x0000000000020000 xr
+data             0x0000000000800060 0x000000000000ffa0 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+LOAD build/mutex1.o
+LOAD build/atomport.o
+LOAD build/uart.o
+LOAD build/tests-main.o
+LOAD build/atomport-asm.o
+LOAD build/atomkernel.o
+LOAD build/atomsem.o
+LOAD build/atommutex.o
+LOAD build/atomtimer.o
+LOAD build/atomqueue.o
+LOAD /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a
+LOAD /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a
+LOAD /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000000000000000     0x33c2
+ *(.vectors)
+ .vectors       0x0000000000000000       0x54 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+                0x0000000000000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x0000000000000054      0x1bc build/mutex1.o
+ .progmem.data  0x0000000000000210       0x14 build/tests-main.o
+                0x0000000000000224                . = ALIGN (0x2)
+                0x0000000000000224                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000000000000224        0x0 linker stubs
+ *(.trampolines*)
+                0x0000000000000224                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000000000000224                __ctors_start = .
+ *(.ctors)
+                0x0000000000000224                __ctors_end = .
+                0x0000000000000224                __dtors_start = .
+ *(.dtors)
+                0x0000000000000224                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x0000000000000224        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+                0x0000000000000224                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000000000000224        0xc /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000000000000230       0x16 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+                0x0000000000000230                __do_copy_data
+ .init4         0x0000000000000246       0x10 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+                0x0000000000000246                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000000000000256        0x8 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+ *(.init9)
+ *(.text)
+ .text          0x000000000000025e        0x4 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+                0x000000000000025e                __vector_1
+                0x000000000000025e                __vector_12
+                0x000000000000025e                __bad_interrupt
+                0x000000000000025e                __vector_3
+                0x000000000000025e                __vector_11
+                0x000000000000025e                __vector_13
+                0x000000000000025e                __vector_17
+                0x000000000000025e                __vector_19
+                0x000000000000025e                __vector_7
+                0x000000000000025e                __vector_5
+                0x000000000000025e                __vector_4
+                0x000000000000025e                __vector_9
+                0x000000000000025e                __vector_2
+                0x000000000000025e                __vector_15
+                0x000000000000025e                __vector_8
+                0x000000000000025e                __vector_14
+                0x000000000000025e                __vector_10
+                0x000000000000025e                __vector_16
+                0x000000000000025e                __vector_18
+                0x000000000000025e                __vector_20
+ .text          0x0000000000000262      0x51e build/mutex1.o
+                0x0000000000000262                test_start
+ .text          0x0000000000000780      0x2d2 build/atomport.o
+                0x00000000000007d4                archThreadContextInit
+                0x00000000000009a4                avrInitSystemTickTimer
+                0x00000000000009d4                __vector_6
+                0x0000000000000a32                __vector_default
+ .text          0x0000000000000a52      0x112 build/uart.o
+                0x0000000000000a52                uart_init
+                0x0000000000000af6                uart_putchar
+ .text          0x0000000000000b64      0x1b0 build/tests-main.o
+                0x0000000000000b64                main
+ .text          0x0000000000000d14       0x94 build/atomport-asm.o
+                0x0000000000000d14                archContextSwitch
+                0x0000000000000d76                archFirstThreadRestore
+ .text          0x0000000000000da8      0x7fe build/atomkernel.o
+                0x0000000000000da8                atomSched
+                0x0000000000000f04                atomThreadCreate
+                0x000000000000106c                atomIntEnter
+                0x000000000000108c                atomIntExit
+                0x00000000000010b8                atomCurrentContext
+                0x00000000000010e0                atomOSInit
+                0x0000000000001178                atomOSStart
+                0x00000000000011d2                tcbEnqueuePriority
+                0x000000000000130a                tcbDequeueHead
+                0x00000000000013ac                tcbDequeueEntry
+                0x00000000000014f2                tcbDequeuePriority
+ .text          0x00000000000015a6      0x4a8 build/atomsem.o
+                0x00000000000015a6                atomSemCreate
+                0x00000000000015ec                atomSemDelete
+                0x00000000000016e0                atomSemGet
+                0x0000000000001878                atomSemPut
+                0x000000000000197c                atomSemResetCount
+ .text          0x0000000000001a4e      0x524 build/atommutex.o
+                0x0000000000001a4e                atomMutexCreate
+                0x0000000000001a98                atomMutexDelete
+                0x0000000000001b8c                atomMutexGet
+                0x0000000000001d8c                atomMutexPut
+ .text          0x0000000000001f72      0x43a build/atomtimer.o
+                0x0000000000001f72                atomTimerRegister
+                0x000000000000201e                atomTimerCancel
+                0x00000000000020f2                atomTimeGet
+                0x0000000000002114                atomTimeSet
+                0x000000000000214e                atomTimerTick
+                0x000000000000218e                atomTimerDelay
+ .text          0x00000000000023ac      0x9da build/atomqueue.o
+                0x00000000000023ac                atomQueueCreate
+                0x00000000000024b2                atomQueueDelete
+                0x00000000000025bc                atomQueueGet
+                0x00000000000027b4                atomQueuePut
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_mulsi3.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodsi4.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(memcpy.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(iob.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen_P.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(fputc.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(ultoa_invert.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_prologue.o)
+ .text          0x0000000000002d86        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_epilogue.o)
+                0x0000000000002d86                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x0000000000002d86       0x3e /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_mulsi3.o)
+                0x0000000000002d86                __mulsi3
+ .text.libgcc   0x0000000000002dc4       0x44 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodsi4.o)
+                0x0000000000002dc4                __udivmodsi4
+ .text.libgcc   0x0000000000002e08        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x0000000000002e08        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000000000002e08        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x0000000000002e08       0x12 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(memcpy.o)
+                0x0000000000002e08                memcpy
+ .text.avr-libc
+                0x0000000000002e1a       0x46 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o)
+                0x0000000000002e1a                printf_P
+ .text.avr-libc
+                0x0000000000002e60      0x3b0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o)
+                0x0000000000002e60                vfprintf
+ .text.avr-libc
+                0x0000000000003210       0x16 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen_P.o)
+                0x0000000000003210                strnlen_P
+ .text.avr-libc
+                0x0000000000003226       0x16 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen.o)
+                0x0000000000003226                strnlen
+ .text.avr-libc
+                0x000000000000323c       0x58 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(fputc.o)
+                0x000000000000323c                fputc
+ .text.avr-libc
+                0x0000000000003294       0xbc /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(ultoa_invert.o)
+                0x0000000000003294                __ultoa_invert
+ .text.libgcc   0x0000000000003350       0x38 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_prologue.o)
+                0x0000000000003350                __prologue_saves__
+ .text.libgcc   0x0000000000003388       0x36 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_epilogue.o)
+                0x0000000000003388                __epilogue_restores__
+                0x00000000000033be                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000000000033be        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+                0x00000000000033be                exit
+                0x00000000000033be                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000000000033be        0x4 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ *(.fini0)
+                0x00000000000033c2                _etext = .
+
+.data           0x0000000000800060        0xe load address 0x00000000000033c2
+                0x0000000000800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+ .data          0x0000000000800060        0x0 build/mutex1.o
+ .data          0x0000000000800060        0x0 build/atomport.o
+ .data          0x0000000000800060        0x0 build/uart.o
+ .data          0x0000000000800060        0xe build/tests-main.o
+ .data          0x000000000080006e        0x0 build/atomport-asm.o
+ .data          0x000000000080006e        0x0 build/atomkernel.o
+ .data          0x000000000080006e        0x0 build/atomsem.o
+ .data          0x000000000080006e        0x0 build/atommutex.o
+ .data          0x000000000080006e        0x0 build/atomtimer.o
+ .data          0x000000000080006e        0x0 build/atomqueue.o
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_mulsi3.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodsi4.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(memcpy.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(iob.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen_P.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(fputc.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(ultoa_invert.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_prologue.o)
+ .data          0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_epilogue.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x000000000080006e                . = ALIGN (0x2)
+                0x000000000080006e                _edata = .
+                0x000000000080006e                PROVIDE (__data_end, .)
+
+.bss            0x000000000080006e      0x2af
+                0x000000000080006e                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x000000000080006e        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+ .bss           0x000000000080006e      0x129 build/mutex1.o
+ .bss           0x0000000000800197        0x0 build/atomport.o
+ .bss           0x0000000000800197        0x5 build/uart.o
+ .bss           0x000000000080019c      0x15d build/tests-main.o
+ .bss           0x00000000008002f9        0x0 build/atomport-asm.o
+ .bss           0x00000000008002f9       0x18 build/atomkernel.o
+                0x00000000008002f9                tcbReadyQ
+                0x00000000008002fb                atomOSStarted
+ .bss           0x0000000000800311        0x0 build/atomsem.o
+ .bss           0x0000000000800311        0x0 build/atommutex.o
+ .bss           0x0000000000800311        0x6 build/atomtimer.o
+ .bss           0x0000000000800317        0x0 build/atomqueue.o
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_mulsi3.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_udivmodsi4.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_exit.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_copy_data.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(memcpy.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(iob.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen_P.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(fputc.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(ultoa_invert.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_prologue.o)
+ .bss           0x0000000000800317        0x0 /usr/lib/gcc/avr/4.5.1/avr5/libgcc.a(_epilogue.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x0000000000800317        0x6 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(iob.o)
+                0x0000000000800317                __iob
+                0x000000000080031d                PROVIDE (__bss_end, .)
+                0x00000000000033c2                __data_load_start = LOADADDR (.data)
+                0x00000000000033d0                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x000000000080031d        0x0
+                0x000000000080031d                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x000000000080031d                PROVIDE (__noinit_end, .)
+                0x000000000080031d                _end = .
+                0x000000000080031d                PROVIDE (__heap_start, .)
+
+.eeprom         0x0000000000810000        0x0
+ *(.eeprom*)
+                0x0000000000810000                __eeprom_end = .
+
+.stab           0x0000000000000000     0x6fcc
+ *(.stab)
+ .stab          0x0000000000000000      0x6b4 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+ .stab          0x00000000000006b4      0xc6c build/mutex1.o
+                                        0xc78 (size before relaxing)
+ .stab          0x0000000000001320      0x4f8 build/atomport.o
+                                        0x7ec (size before relaxing)
+ .stab          0x0000000000001818      0x384 build/uart.o
+                                        0x660 (size before relaxing)
+ .stab          0x0000000000001b9c      0x414 build/tests-main.o
+                                        0x738 (size before relaxing)
+ .stab          0x0000000000001fb0      0xdf8 build/atomkernel.o
+                                       0x10ec (size before relaxing)
+ .stab          0x0000000000002da8      0xa20 build/atomsem.o
+                                        0xd14 (size before relaxing)
+ .stab          0x00000000000037c8      0xa14 build/atommutex.o
+                                        0xd2c (size before relaxing)
+ .stab          0x00000000000041dc      0x894 build/atomtimer.o
+                                        0xb88 (size before relaxing)
+ .stab          0x0000000000004a70      0xe94 build/atomqueue.o
+                                       0x1188 (size before relaxing)
+ .stab          0x0000000000005904       0x84 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(memcpy.o)
+                                         0x90 (size before relaxing)
+ .stab          0x0000000000005988      0x300 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(iob.o)
+                                        0x30c (size before relaxing)
+ .stab          0x0000000000005c88      0x1a4 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(printf_p.o)
+                                        0x384 (size before relaxing)
+ .stab          0x0000000000005e2c      0xa14 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(vfprintf_std.o)
+                                        0xbf4 (size before relaxing)
+ .stab          0x0000000000006840       0x9c /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen_P.o)
+                                         0xa8 (size before relaxing)
+ .stab          0x00000000000068dc       0x9c /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(strnlen.o)
+                                         0xa8 (size before relaxing)
+ .stab          0x0000000000006978      0x1d4 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(fputc.o)
+                                        0x3b4 (size before relaxing)
+ .stab          0x0000000000006b4c      0x480 /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/libc.a(ultoa_invert.o)
+                                        0x48c (size before relaxing)
+
+.stabstr        0x0000000000000000     0x2bee
+ *(.stabstr)
+ .stabstr       0x0000000000000000     0x2bee /usr/lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm16.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(build/mutex1.elf elf32-avr)
+LOAD linker stubs

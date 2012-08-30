@@ -10,9 +10,9 @@ VERBOSE=0
 
 # Location of build tools and atomthreads sources
 
-KERNEL_DIR=/home/ashwinv/punehills/atomthreads/kernel
-TESTS_DIR=/home/ashwinv/punehills/atomthreads/project
-AVR_DIR=/home/ashwinv/punehills/atomthreads/ports/avr
+KERNEL_DIR=kernel
+TESTS_DIR=project
+AVR_DIR=arch
 CC=/usr/bin/avr-gcc
 OBJCOPY=/usr/bin/avr-objcopy
 SIZE=/usr/bin/avr-size
