@@ -1,7 +1,7 @@
 ############
 # Settings #
 ############
-
+VERBOSE=0
 # Build all test applications:
 #   make
 #
@@ -81,7 +81,6 @@ all: $(BUILD_DIR) $(TEST_HEXS) Makefile
 
 # Make build/output directory
 $(BUILD_DIR):
-	echo "1"
 	echo $(BUILT_OBJECTS)
 	mkdir $(BUILD_DIR)
 
@@ -92,32 +91,26 @@ $(TEST_HEXS): %.hex: %.elf
 
 # Test ELF files (one application build for each test)
 $(TEST_ELFS): %.elf: %.o $(KERNEL_OBJECTS) $(APP_OBJECTS) $(APP_ASM_OBJECTS)
-	echo "a"
 	$(CC) $(CFLAGS) $(BUILD_DIR)/$(notdir $<) $(BUILT_OBJECTS) --output $(BUILD_DIR)/$@ -Wl,-Map,$(BUILD_DIR)/$(basename $@).map
 
 # Kernel objects builder
 $(KERNEL_OBJECTS): %.o: $(KERNEL_DIR)/%.c
-	echo "2"
 	$(CC) -c $(CFLAGS) -I$(AVR_DIR) -I$(KERNEL_DIR) $< -o $(BUILD_DIR)/$(notdir $@)
 
 # Test objects builder
 $(TEST_OBJECTS): %.o: $(TESTS_DIR)/%.c
-	echo "3"
 	$(CC) -c $(CFLAGS) -I$(AVR_DIR) -I$(KERNEL_DIR) $< -o $(BUILD_DIR)/$(notdir $@)
 
 # Application C objects builder
 $(APP_OBJECTS): %.o: $(AVR_DIR)/%.c
-	echo "4"
 	$(CC) -c $(CFLAGS) -I$(AVR_DIR) -I$(KERNEL_DIR) -I$(TESTS_DIR) $< -o $(BUILD_DIR)/$(notdir $@)
 
 # Application asm objects builder
 $(APP_ASM_OBJECTS): %.o:  $(AVR_DIR)/%.s
-	echo "5"
 	$(CC) -c $(CFLAGS) -x assembler-with-cpp -I$(AVR_DIR) -I$(KERNEL_DIR) $< -o $(BUILD_DIR)/$(notdir $@)
 
 # .lst file builder
 %.lst: %.c
-	echo "6"
 	$(CC) $(CFLAGS) -I$(AVR_DIR) -I$(KERNEL_DIR) -I$(TESTS_DIR) -Wa,-al $< > $@
 
 # Clean

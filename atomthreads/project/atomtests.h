@@ -1,6 +1,5 @@
 /*
- * Copyright (c) 2011, Anup Patel for Atomthreads Project.
- * All rights reserved.
+ * Copyright (c) 2010, Kelvin Lawson. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -28,51 +27,21 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __ATOM_PORT_H
-#define __ATOM_PORT_H
+#ifndef __ATOM_TESTS_H
+#define __ATOM_TESTS_H
+
+/* Include Atomthreads kernel API */
+#include "atom.h"
+
+/* Include port-specific test configuration */
+#include "atomport-tests.h"
 
 
-/* Required number of system ticks per second (normally 100 for 10ms tick) */
-#define SYSTEM_TICKS_PER_SEC            1000
+/* Default thread priority */
+#define TEST_THREAD_PRIO            16
 
-/**
- * Definition of NULL. stddef.h not available on this platform.
- */
-#define NULL ((void *)(0))
-
-/* Size of each stack entry / stack alignment size (32 bits on ARMv7A) */
-#define STACK_ALIGN_SIZE                sizeof(uint32_t)
-
-/**
- * Architecture-specific types.
- * Provide stdint.h style types.
- */
-#define uint8_t   unsigned char
-#define uint16_t  unsigned short
-#define uint32_t  unsigned int
-#define uint64_t  unsigned long long
-#define int8_t    signed char
-#define int16_t   signed short
-#define int32_t   signed int
-#define int64_t   long long
-#define size_t    unsigned long
-#define POINTER   void *
-#define UINT32    uint32_t
-
-/**
- * Critical region protection: this should disable interrupts
- * to protect OS data structures during modification. It must
- * allow nested calls, which means that interrupts should only
- * be re-enabled when the outer CRITICAL_END() is reached.
- */
-#include "arm_irq.h"
-#include "atomport-private.h"
-#define CRITICAL_STORE		irq_flags_t status_flags
-#define CRITICAL_START()	status_flags = arm_irq_save();
-#define CRITICAL_END()		arm_irq_restore(status_flags);
-
-/* Uncomment to enable stack-checking */
-/* #define ATOM_STACK_CHECKING */
+/* API for starting each test */
+extern uint32_t test_start (void);
 
 
-#endif /* __ATOM_PORT_H */
+#endif /* __ATOM_TESTS_H */
