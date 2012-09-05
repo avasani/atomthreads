@@ -30,7 +30,7 @@
 
 #include "atom.h"
 #include "atom_os.h"
-
+#include "Arduino.h"
 
 /* Test OS objects */
 static ATOM_TCB tcb1;
@@ -54,6 +54,7 @@ static void test_thread_func (uint32_t param);
  *
  * @retval Number of failures
  */
+int led = 13;
 uint32_t app_main_start (void)
 {
     int failures;
@@ -61,12 +62,25 @@ uint32_t app_main_start (void)
     /* Default to zero failures */
     failures = 0;
 
+	int count = 10;
+    /* Compiler warnings */
+	//    param = param;
+    pinMode(led, OUTPUT);
+
+    while (1) {
+	    digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+	    delay(2000);               // wait for a second
+	    digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+	    delay(2000);               // wait for a second 
+	    count++;
+      	    printf("Hello\n");
+    }
     /* atomThreadCreate: Pass a bad TCB pointer */
     if (atomThreadCreate (NULL, TEST_THREAD_PRIO, test_thread_func, 0,
             &test_thread_stack[0],
             TEST_THREAD_STACK_SIZE, TRUE) != ATOM_ERR_PARAM)
     {
-        ATOMLOG (_STR("Bad TCB check\n"));
+	    //        ATOMLOG (_STR("Bad TCB check\n"));
         failures++;
     }
 
@@ -75,7 +89,7 @@ uint32_t app_main_start (void)
             &test_thread_stack[0],
             TEST_THREAD_STACK_SIZE, TRUE) != ATOM_ERR_PARAM)
     {
-        ATOMLOG (_STR("Bad entry check\n"));
+	    //        ATOMLOG (_STR("Bad entry check\n"));
         failures++;
     }
 
@@ -83,7 +97,7 @@ uint32_t app_main_start (void)
     if (atomThreadCreate (&tcb1, TEST_THREAD_PRIO, test_thread_func, 0,
             NULL, TEST_THREAD_STACK_SIZE, TRUE) != ATOM_ERR_PARAM)
     {
-        ATOMLOG (_STR("Bad stack ptr check\n"));
+	    //        ATOMLOG (_STR("Bad stack ptr check\n"));
         failures++;
     }
 
@@ -91,7 +105,7 @@ uint32_t app_main_start (void)
     if (atomThreadCreate (&tcb1, TEST_THREAD_PRIO, test_thread_func, 0,
             &test_thread_stack[0], 0, TRUE) != ATOM_ERR_PARAM)
     {
-        ATOMLOG (_STR("Bad stack size check\n"));
+	    //        ATOMLOG (_STR("Bad stack size check\n"));
         failures++;
     }
 
@@ -110,11 +124,10 @@ uint32_t app_main_start (void)
  *
  * @return None
  */
+
 static void test_thread_func (uint32_t param)
 {
-    /* Compiler warnings */
-    param = param;
-
+     
     /* Wait forever */
     while (1)
     {

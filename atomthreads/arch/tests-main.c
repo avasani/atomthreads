@@ -28,14 +28,13 @@
  */
 
 #include <stdio.h>
-
 #include "atom.h"
 #include "atomport-private.h"
 #include "atom_os.h"
 #include "atomtimer.h"
-#include "uart.h"
+#include "Arduino.h"
 #include <avr/pgmspace.h>
-
+#include "uart.h"
 
 /* Constants */
 
@@ -148,8 +147,11 @@ static void main_thread_func (uint32_t data);
 
 int main ( void )
 {
-    int8_t status;
-
+    uint8_t status;
+    init();
+    uart_init(9600);
+    stdout = &uart_stdout;
+    printf_P (PSTR("Go\n"));
     /**
      * Reuse part of the idle thread's stack for the stack required
      * during this startup function.
@@ -231,21 +233,8 @@ static void main_thread_func (uint32_t data)
     DDRB = 0xFF;
     PORTB = 0xFF;
 
-    /* Initialise UART (9600bps) */
-    if (uart_init(9600) != 0)
-    {
-        /* Error initialising UART */
-    }
-
-    /**
-     * Redirect stdout via the UART. Note that the UART write routine
-     * is protected via a semaphore, so the OS must be started before
-     * use of the UART.
-     */
-    stdout = &uart_stdout;
-
-    /* Put a message out on the UART */
-    printf_P (PSTR("Go\n"));
+  
+  
 
     /* Start test. All tests use the same start API. */
     main_status = app_main_start();
@@ -262,13 +251,11 @@ static void main_thread_func (uint32_t data)
             /* Check the thread did not use up to the end of stack */
             if (free_bytes == 0)
             {
-                printf_P (PSTR("Main stack overflow\n"));
                 main_status++;
             }
 
             /* Log the stack usage */
 #ifdef TESTS_LOG_STACK_USAGE
-            printf_P (PSTR("MainUse:%d\n"), used_bytes);
 #endif
         }
 

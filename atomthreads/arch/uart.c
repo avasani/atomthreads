@@ -60,11 +60,11 @@ uart_init(uint32_t baudrate)
   int status;
 
   /* Set up the UART device with the selected baudrate */
-#if AVR_CPU_HZ < 2000000UL && defined(U2X)
+#if F_CPU < 2000000UL && defined(U2X)
   REG_UCSRA = _BV(U2X);             /* improve baud rate error by using 2x clk */
-  REG_UBRRL = (AVR_CPU_HZ / (8UL * baudrate)) - 1;
+  REG_UBRRL = (F_CPU / (8UL * baudrate)) - 1;
 #else
-  REG_UBRRL = (AVR_CPU_HZ / (16UL * baudrate)) - 1;
+  REG_UBRRL = (F_CPU / (16UL * baudrate)) - 1;
 #endif
   REG_UCSRB = _BV(BIT_TXEN) | _BV(BIT_RXEN); /* tx/rx enable */
 

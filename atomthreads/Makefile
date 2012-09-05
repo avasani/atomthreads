@@ -38,7 +38,7 @@ PART=atmega328p
 BUILD_DIR=libs
 
 # Port/application object files
-APP_OBJECTS = atomport.o uart.o tests-main.o
+APP_OBJECTS = atomport.o wiring.o wiring_digital.o uart.o tests-main.o 
 APP_ASM_OBJECTS = atomport-asm.o
 
 # Kernel object files
