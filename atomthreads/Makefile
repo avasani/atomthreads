@@ -1,7 +1,7 @@
 ############
 # Settings #
 ############
-VERBOSE=0
+VERBOSE=1
 # Build all project applications:
 #   make
 #
@@ -23,7 +23,7 @@ SIMAVR=/tmp/run_avr
 UISP_DEV=/dev/ttyUSB0
 
 # Modify this to the CPU you are using
-PART=atmega16
+PART=atmega328p
 
 # Enable stack-checking. WARNING: the full automated test suite currently
 # requires a little over 1KB RAM with stack-checking enabled. If you are 
@@ -61,7 +61,7 @@ vpath %.elf ./$(BUILD_DIR)
 vpath %.hex ./$(BUILD_DIR)
 
 # GCC flags
-CFLAGS=-g -mmcu=$(PART) -Wall -Werror
+CFLAGS=-g -mmcu=$(PART) -Wall -Werror -DARDUINO=100 -DF_CPU=16000000L -ffunction-sections -fdata-sections -fno-exceptions -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
 
 # Enable stack-checking options (disable if not required)
 ifeq ($(STACK_CHECK),true)
@@ -130,6 +130,8 @@ doxygen:
 	doxygen $(KERNEL_DIR)/Doxyfile
 	doxygen ./Doxyfile
 
+upload:
+	avrdude avrdude -V -F -c arduino -p m328p -P /dev/ttyACM0 -U flash:w:thread.hex
 # Run tests within simavr simulator
 phony_sim_elfs = $(addsuffix .sim, $(PROJ_ELFS))
 simtests: $(phony_sim_elfs)
