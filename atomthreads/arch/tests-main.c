@@ -36,6 +36,67 @@
 #include <avr/pgmspace.h>
 #include "uart.h"
 
+
+static ATOM_TCB app1_tcb, app2_tcb;
+
+#define APP_STACK_SIZE_BYTES 150
+static uint8_t app1_thread_stack[APP_STACK_SIZE_BYTES];
+static uint8_t app2_thread_stack[APP_STACK_SIZE_BYTES];
+
+static void app1_thread_func(uint32_t data)
+{
+  int i = 0;
+  uint8_t ret = 0;
+  while (1) {
+    printf("In App Thread1: %d\n", i++);
+    ret = atomTimerDelay(1000);
+    if (ret != ATOM_OK)
+	printf("ret = %d\n", ret);
+  }
+}
+
+static void app2_thread_func(uint32_t data)
+{
+  int i = 0,ret = 0;
+  while (1) {
+      printf("In App Thread2: %d\n", i++);
+      ret = atomTimerDelay(2000);
+      if (ret != ATOM_OK)
+	printf("ret = %d\n", ret);
+  }
+}
+
+int create_mythread1()
+{
+  if (ATOM_OK == atomThreadCreate(&app1_tcb,
+			  5,
+			  app1_thread_func,
+			  0,
+			  &app1_thread_stack[0],
+			  APP_STACK_SIZE_BYTES,
+				  TRUE) )
+    printf("Thread Created\n");
+  else
+    printf("Failed\n");
+  return 0;
+}
+
+int create_mythread2()
+{
+  if (ATOM_OK == atomThreadCreate(&app2_tcb,
+			  6,
+			  app2_thread_func,
+			  0,
+			  &app2_thread_stack[0],
+			  APP_STACK_SIZE_BYTES,
+				  TRUE) )
+    printf("Thread Created\n");
+  else
+    printf("Failed\n");
+  return 0;
+}
+
+
 /* Constants */
 
 /*
@@ -75,7 +136,7 @@
  * future as the codebase changes but for the time being is enough to
  * cope with all of the automated tests.
  */
-#define MAIN_STACK_SIZE_BYTES       204
+#define MAIN_STACK_SIZE_BYTES       512
 
 
 /*
@@ -202,6 +263,7 @@ int main ( void )
              * thread in archFirstThreadRestore().
              */
             atomOSStart();
+
         }
     }
 
@@ -229,14 +291,10 @@ static void main_thread_func (uint32_t data)
     uint32_t main_status;
     int sleep_ticks;
 
-    /* Enable all LEDs (STK500-specific) */
-    DDRB = 0xFF;
-    PORTB = 0xFF;
-
-  
-  
-
     /* Start test. All tests use the same start API. */
+    create_mythread1();
+    create_mythread2();
+
     main_status = app_main_start();
 
     /* Check main thread stack usage (if enabled) */

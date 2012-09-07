@@ -68,7 +68,7 @@
 
 
 #include "atom.h"
-
+#include "stdio.h"
 
 /* Data types */
 
@@ -299,7 +299,7 @@ void atomTimerTick (void)
     {
         /* Increment the system tick count */
         system_ticks++;
-
+	atomSched(TRUE);
         /* Check for any callbacks that are due */
         atomTimerCallbacks ();
     }
