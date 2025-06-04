@@ -253,7 +253,15 @@ uint8_t atomTimerCancel (ATOM_TIMER *timer_ptr)
  */
 uint32_t atomTimeGet(void)
 {
-    return (system_ticks);
+    uint32_t time;
+    CRITICAL_STORE;
+
+    /* Protect against concurrent tick updates on small CPUs */
+    CRITICAL_START();
+    time = system_ticks;
+    CRITICAL_END();
+
+    return (time);
 }
 
 
@@ -275,7 +283,12 @@ uint32_t atomTimeGet(void)
  */
 void atomTimeSet(uint32_t new_time)
 {
+    CRITICAL_STORE;
+
+    /* Ensure atomic update of the tick count */
+    CRITICAL_START();
     system_ticks = new_time;
+    CRITICAL_END();
 }
 
 
