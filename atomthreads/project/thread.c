@@ -5,10 +5,7 @@
 int led = 13;
 uint32_t app_main_start (void)
 {
-  int failures, i = 0;
-
-    /* Default to zero failures */
-    failures = 0;
+  int i = 0;
 	int count = 10;
     /* Compiler warnings */
 	//    param = param;
@@ -22,5 +19,4 @@ uint32_t app_main_start (void)
 	    count++;
       	    printf("Hello : %d\n",i++);
     }
-    return failures;
 }
